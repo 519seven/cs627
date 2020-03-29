@@ -1,3 +1,6 @@
+# Filesystem stuff
+.DS_STORE
+
 # Compiled class file
 *.class
 
