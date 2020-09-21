@@ -89,6 +89,8 @@ public class SmallProjectThree {
         }
         if (kAlice.compareTo(kBob) == 0) {
             printer("["+header+"      INFO] Success! Alice's and Bob's common session keys are the same!");
+            printer("["+header+"    ANSWER] Alice's key is: 0x"+kAlice.toString(16));
+            printer("["+header+"    ANSWER] Bob's key is: 0x"+kBob.toString(16));
         } else {
             printer("["+header+"      INFO] Fail! Alice's and Bob's common session keys are NOT the same!");
         }
@@ -133,7 +135,7 @@ public class SmallProjectThree {
                 // if this bit is one, then
                 if (Q[0].compareTo(ZERO) == 0 && Q[1].compareTo(ZERO) == 0) {
                     // If Q is ZERO POINT then Q becomes the thing being added to it
-                    printer("["+header+"        INFO] Adding G (0x"+Gx.toString(16)+", 0x"+Gy.toString(16)+") to Q");
+                    if (DEBUG) { printer("["+header+"       DEBUG] Adding G (0x"+Gx.toString(16)+", 0x"+Gy.toString(16)+") to Q"); }
                     Q[0] = Gx;
                     Q[1] = Gy;
                 } else {
@@ -183,6 +185,12 @@ public class SmallProjectThree {
         /**/
     }
 
+
+    public void eccMapMessageToPoint(String header, BigInteger a, BigInteger n) {
+        printer("["+header+"        WARN] I think I figured most of this out on paper but too late in the game to incorporate it here");
+        printer("["+header+"        WARN] Sorry.  I need to absorb this stuff quicker");
+    }
+    
 
     public void elgamal(String header, BigInteger a, BigInteger Xa, BigInteger Xb, BigInteger q, BigInteger k) {
         // Question 4 Part (a) - What is Alice's Elgamal public key?
@@ -353,6 +361,8 @@ public class SmallProjectThree {
             BigInteger Gx = new BigInteger("aa87ca22be8b05378eb1c71ef320ad746e1d3b628ba79b9859f741e082542a385502f25dbf55296c3a545e3872760ab7", 16);
             BigInteger Gy = new BigInteger("3617de4a96262c6f5d9e98bf9292dc29f8f41dbd289a147ce9da3113b5f0b8c00a60b1ce1d7e819d7a431d7c90ea0e5f", 16);
             BigInteger[] Pa = sp3.eccCreatePublicKey(header, a, b, p, nA, Gx, Gy);
+            BigInteger m = new BigInteger("12", 10);
+            sp3.eccMapMessageToPoint(header, a, m);
         }
 	}
 }
