@@ -1,6 +1,10 @@
 # Filesystem stuff
 .DS_STORE
 
+# I tend to drop my assignments in this folder
+*.pages
+*.pdf
+
 # Compiled class file
 *.class
 
